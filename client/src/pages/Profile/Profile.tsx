@@ -7,7 +7,7 @@ const Profile: React.FC = () => {
         <h1 className="text-[40px] font-bold mt-4 text-[#066F8C] font-poppins">
           Your Profile
         </h1>
-        <p className="text-[16px] font-bold mt-4 text-[#384B6B] font-poppins">
+        <p className="text-[16px] font-medium  mt-4 text-[#384B6B] font-poppins">
           Customize your profile
         </p>
         <div className="text-center">
@@ -21,7 +21,7 @@ const Profile: React.FC = () => {
 
         <div className="mt-6">
         
-          <p className="text-[16px] font-bold text-[#384B6B] font-poppins mt-2">
+          <p className="text-[16px]  text-[#384B6B] font-poppins mt-2">
             Hello! I'm a software engineer passionate about building intuitive and dynamic web applications. I enjoy solving complex problems and learning new technologies.
           </p>
         </div>
