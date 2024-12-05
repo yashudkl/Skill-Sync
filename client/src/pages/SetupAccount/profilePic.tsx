@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import AvatarInput from "../../components/AvatarInput";
 import Button from "../../components/Button";
+import { useAuthFormContext } from "../../contexts/authFormContext";
 
 export default function SetupPfpPage() {
     const navigate = useNavigate()
+    const {setupState, setSetupState} = useAuthFormContext()
     return (
         <div className="p-6 flex w-screen h-screen flex-col space-y-4">
             <div className="flex py-2">
@@ -17,7 +19,7 @@ export default function SetupPfpPage() {
                     Choose Profile Picutre
                     </div>
                     <div className="flex items-center justify-center">
-                        <AvatarInput />
+                        <AvatarInput onUrlChange={(url)=>setSetupState({...setupState, pfp_url:  url})} imageSrc={setupState.pfp_url} onImageChange={(image)=>setSetupState({...setupState, pfp_file: image})} />
                     </div>
                 </div>
                 <div className="mt-auto flex">

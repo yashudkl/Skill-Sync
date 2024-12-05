@@ -4,14 +4,16 @@ import AddIcon from '@mui/icons-material/Add';
 interface Props {
     imageSrc?: string,
     onImageChange?: (image: File) => void;
+    onUrlChange?: (url: string)=>void;
 }
-export default function AvatarInput({imageSrc, onImageChange}: Props){
+export default function AvatarInput({imageSrc, onImageChange, onUrlChange}: Props){
     const id = useId();
     const [src, setSrc] = useState(imageSrc);
     const handleChange = (e: any) => {
         const file = e.target.files[0] as File|null;
         if(!file) return;
         const src = URL.createObjectURL(file);
+        onUrlChange?.(src);
         setSrc(src);
         onImageChange?.(file)
     }
