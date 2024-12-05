@@ -4,7 +4,7 @@ interface Props extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLIn
 export default function CustomInput(props: Props)
 {
     return(
-        <div>
+        <div className="bg-c_gray-500">
             <input {...props} className=""/>
         </div>
     )
