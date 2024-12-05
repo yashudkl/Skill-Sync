@@ -13,7 +13,8 @@ export default {
         lg: "40px",
         xl: "48px"
       },
-      "primary-blue": {
+      colors: {
+"primary-blue": {
         900: "#35B3F2",
         400: "#64BFFA",
         300: "#94CEFD",
@@ -31,6 +32,8 @@ export default {
         200: "#EFEFF8",
         100: "#F8F8FD"
       }
+      }
+      
     },
   },
   plugins: [],
