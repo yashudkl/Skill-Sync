@@ -4,6 +4,7 @@ import Profile from "../pages/Profile/Profile"; // Keeping the Profile import
 import SetupPfpPage from "../pages/SetupAccount/profilePic";
 import SetupSkillsSelectionPage from "../pages/SetupAccount/SkillsSelection";
 import CreateTeam from "../pages/CreateTeam/createTeam";
+import JoinTeam from "../pages/JoinTeam/joinTeam";
 
 export default function MainRouter() {
     return (
@@ -17,6 +18,7 @@ export default function MainRouter() {
                 <Route path="/setup/pfp" element = {<SetupPfpPage />} />
                 <Route path="/setup/skills" element = {<SetupSkillsSelectionPage/>} />
                 <Route path="/createTeam" element = {<CreateTeam/>}/>
+                <Route path="/joinTeam" element = {<JoinTeam/>}/>
             </Routes>
         </BrowserRouter>
     );
