@@ -3,9 +3,12 @@ import PersonIcon from '@mui/icons-material/Person';
 import CustomTextArea from "../../components/textarea";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthFormContextProvider, useAuthFormContext } from "../../contexts/authFormContext";
 // import CustomTextArea from "../../components/textarea";
 export default function SetupDescriptionPage(){
     const navigate = useNavigate();
+    const {setupState, setSetupState} = useAuthFormContext();
     return(
         <>
             <div className="p-6 flex w-screen h-screen flex-col space-y-4">
@@ -17,7 +20,7 @@ export default function SetupDescriptionPage(){
                 </div>
                 <form className="flex flex-col w-full flex-1">
                     <div className="h-[490px] w-full">
-                        <CustomTextArea placeholder="Describe..." />
+                        <CustomTextArea value = {setupState.bio} onChange={(e)=>setSetupState({...setupState, bio: e.target.value})} placeholder="Describe..." />
                     </div>
                     <div className="mt-auto">
                         <Button onClick={()=>navigate("/setup/skills")}>Next</Button>

@@ -3,6 +3,8 @@ import Button from "../../components/Button";
 import CustomInput from "../../components/input";
 import SearchIcon from '@mui/icons-material/Search';
 import { communitySkills } from "../../lib/skills";
+import { useContext } from "react";
+import { useAuthFormContext } from "../../contexts/authFormContext";
 export default function SetupSkillsSelectionPage() {
     return (
         <div className="p-6 flex w-screen h-screen flex-col space-y-6">
@@ -33,10 +35,13 @@ interface Props {
     label: string,
 }
 function Item({label}: Props){
+    const {setupState, setSetupState} = useAuthFormContext();
     return(
         <div className="flex justify-between items-center text-c_gray-700 font-medium">
             <div>{label}</div>
-            <Button className="w-auto px-4 py-1 font-normal text-sm">Add</Button>
+            {
+                setupState.skills.includes(label)?<Button className="w-auto px-4 py-1 font-normal text-sm bg-primary-blue-300" onClick={()=>setSetupState({...setupState, skills: setupState.skills.filter(x=>x!==label)})}>Remove</Button>:<Button className="w-auto px-4 py-1 font-normal text-sm" onClick={()=>setSetupState({...setupState, skills: [...setupState.skills, label]})}>Add</Button>
+            }
         </div>
     )
 }
