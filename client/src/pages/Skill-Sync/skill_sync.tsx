@@ -16,7 +16,7 @@ export default function LoginPage() {
                         Choose your option below to start your dream projects.
                     </div>
 
-
+<hr />
 
 {/* Boxes Section */}
 
