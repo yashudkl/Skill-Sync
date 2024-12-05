@@ -8,7 +8,7 @@ import { toastError } from "../../lib/toast.lib";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
-    const {login, setLoginState, loginState} = useAuthFormContext();
+    const {login, setLoginState, loginState, setCurrentUser} = useAuthFormContext();
     const navigate = useNavigate();
     const onLogin = async(e: any) => {
         e.preventDefault()
@@ -17,6 +17,7 @@ export default function LoginPage() {
             toastError(res.message);
             return;
         }
+        setCurrentUser(res.result)
         navigate("/")
     }
     return (

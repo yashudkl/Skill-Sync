@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function SignupPage() {
    
-    const {signup, setSignupState, signupState} = useAuthFormContext();
+    const {signup, setSignupState, signupState, setCurrentUser} = useAuthFormContext();
     const navigate = useNavigate();
     const onSignUp = async(e: any) => {
         e.preventDefault();
@@ -18,7 +18,8 @@ export default function SignupPage() {
             toastError(res.message);
             return;
         }
-        navigate("/")
+        setCurrentUser(res.result)
+        navigate("/setup/pfp")
     }
     return (
         <div className="p-6 flex flex-col w-screen h-screen justify-between">

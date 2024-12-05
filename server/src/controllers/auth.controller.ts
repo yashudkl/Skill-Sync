@@ -14,11 +14,11 @@ export const loginController: Controller = async(req, res) => {
         const {username, password} = req.body;
         const user = await User.findOne({username});
         if(!user) return jsonResponse.clientError("No user found");
-        const isPasswordValid = await bcrypt.compare(password, user.password);
+        const isPasswordValid = await bcrypt.compare(password, user.password as string);
         if (!isPasswordValid) {
             return jsonResponse.clientError('Invalid password');
         }
-        const token = generateToken(user.user_id);
+        const token = generateToken(user.id);
         res.cookie("session", token, options);
         const savedUser = user.toJSON() as any;
         delete savedUser.password;
@@ -52,7 +52,7 @@ export const signupController: Controller = async(req, res) => {
         const savedUser = user.toJSON() as any;
         delete savedUser.password;
         delete savedUser.email;
-        const token = generateToken(user.user_id);
+        const token = generateToken(user.id);
         res.cookie("session", token, options);
         jsonResponse.success(savedUser);
     } catch (error) {
@@ -77,9 +77,9 @@ export const authenticateUser: Controller = async(req, res, next) => {
     try {
         const token = req.cookies.session;
         if(!token) return jsonResponse.notAuthorized();
-        const { user_id } = jwt.verify(token, process.env.USER_SESSION_JWT||"") as any;
+        const { user_id } = jwt.verify(token, AUTH_JWT) as any;
         if(!user_id) return jsonResponse.notAuthorized();
-        const user = await User.findOne({user_id}).select("-password -email");
+        const user = await User.findById(user_id).select("-password -email");
         if(!user) return jsonResponse.clientError("User not found");
         res.locals.user = user.toJSON();
         next?.();

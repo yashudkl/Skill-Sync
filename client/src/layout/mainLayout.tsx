@@ -3,10 +3,12 @@ import NavBar from "../components/Nav";
 
 export default function MainLayout()
 {
-    console.log("Hello")
     return(
         <div>
-            <Outlet />
+            <div className="pb-[80px] min-h-screen">
+                <Outlet />
+            </div>
+            
             <NavBar />
         </div>
     )
