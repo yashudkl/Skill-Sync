@@ -3,6 +3,7 @@ import NavBar from "../components/Nav";
 
 export default function MainLayout()
 {
+    console.log("Hello")
     return(
         <div>
             <Outlet />

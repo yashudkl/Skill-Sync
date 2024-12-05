@@ -9,7 +9,12 @@ import MainLayout from "../layout/mainLayout"; // Main layout for navigation
 export default function MainRouter() {
   return (
     <BrowserRouter>
+    
       <Routes>
+      <Route path="/" element={<MainLayout />}>
+          <Route index element={<div>HEY</div>} /> {/* Default Route */}
+          <Route path = "profile" element={<Profile />} /> {/* Default Route */}
+        </Route>
         {/* Setup Routes */}
         <Route path="/setup/description" element={<SetupDescriptionPage />} />
         <Route path="/setup/pfp" element={<SetupPfpPage />} />
@@ -22,9 +27,7 @@ export default function MainRouter() {
         <Route path="/createTeam" element={<CreateTeam />} />
 
         {/* Main Layout with nested routes */}
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<div>HEY</div>} /> {/* Default Route */}
-        </Route>
+        
       </Routes>
     </BrowserRouter>
   );
