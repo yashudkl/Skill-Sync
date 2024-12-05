@@ -3,22 +3,14 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Link } from "react-router-dom";
 
 const TeamDashboard: React.FC = () => {
-
-
-
-  // state to hold user data and modal visibility
-
-
+  // State to hold user data, modal visibility, and disband success message
   const [users, setUsers] = useState<{ id: string; name: string; profilePicture: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
+  const [disbanded, setDisbanded] = useState(false); // State to track if the team was disbanded
 
   useEffect(() => {
-
-
-    // simulate fetching data with mock data
-
-
+    // Simulate fetching data with mock data
     const mockUsers = [
       {
         id: "123",
@@ -42,38 +34,38 @@ const TeamDashboard: React.FC = () => {
       },
     ];
 
-
-
+    // Simulate API delay (500ms)
     setTimeout(() => {
-      setUsers(mockUsers);  // set the users state with mock data
-      setLoading(false);  // set loading state to false after fetching data
+      setUsers(mockUsers);  // Set the users state with mock data
+      setLoading(false);  // Set loading state to false after fetching data
     }, 500);
   }, []);
 
-  // loading state
+  // Loading state
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  // handle remove user
+  // Handle remove user
   const handleRemove = (id: string) => {
     setUsers(users.filter((user) => user.id !== id)); // Remove user from state by filtering out the user
   };
 
-
+  // Handle disband team (open confirmation modal)
   const disbandTeam = () => {
     setIsModalOpen(true); // Open the confirmation modal
   };
 
-
+  // Confirm the disband action
   const confirmDisband = () => {
-    setUsers([]); 
-    setIsModalOpen(false);
+    setUsers([]); // Clear all users from the team
+    setIsModalOpen(false); // Close the modal
+    setDisbanded(true); // Set disbanded state to true to show success message
   };
 
-
+  // Cancel the disband action
   const cancelDisband = () => {
-    setIsModalOpen(false); 
+    setIsModalOpen(false); // Close the modal
   };
 
   return (
@@ -87,9 +79,14 @@ const TeamDashboard: React.FC = () => {
         <h1 className="text-[28px] font-medium mt-4 mb-4 text-[#066F8C] font-poppins">Your Team</h1>
         <hr />
 
+        {/* Show message if team has been disbanded */}
+        {disbanded && (
+          <div className="text-center text-red-600 font-semibold text-xl mt-10">
+            The team has been successfully disbanded.
+          </div>
+        )}
 
-
-
+        {/* User Data - Each profile in a row */}
         <div className="mt-4 space-y-6">
           {users.map((user) => (
             <div key={user.id} className="flex items-center justify-between bg-white p-4 rounded-lg shadow-md">
@@ -120,20 +117,28 @@ const TeamDashboard: React.FC = () => {
           ))}
         </div>
 
-        <h1 className="text-[#066F8C] text-xl font-bold text-center mt-20">Congratulations!</h1>
-
         <div className="flex justify-center items-center mt-10 mb-20">
-          {/* disband Team Button */}
-          <button
-            className="bg-red-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-[#066F8C]"
-            onClick={disbandTeam}
-          >
-            Disband Team
-          </button>
+          {/* Disband Team Button */}
+          {!disbanded ? (
+            <button
+              className="bg-red-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-[#066F8C]"
+              onClick={disbandTeam}
+            >
+              Disband Team
+            </button>
+          ) : (
+            <Link to="/joinTeam">
+              <button
+                className="bg-blue-400 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-[#066F8C]"
+              >
+                Join a New Team
+              </button>
+            </Link>
+          )}
         </div>
       </div>
 
-      {/* confirmation Modal */}
+      {/* Confirmation Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50">
           <div className="bg-white p-6 rounded-md shadow-lg max-w-sm w-full">
