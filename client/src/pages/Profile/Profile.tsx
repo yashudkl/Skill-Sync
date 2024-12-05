@@ -1,9 +1,9 @@
 import React from 'react';
-
+import Button from '../../components/Button';
 const Profile: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[#F8F8FD]">
-      <div className="w-[390px] h-[844px] bg-white shadow-md rounded-lg p-6">
+    <div className="flex flex-col  bg-[#F8F8FD]">
+      <div className="w-full h-screen bg-white shadow-md rounded-lg p-6">
         <h1 className="text-[40px] font-bold mt-4 text-[#066F8C] font-poppins">
           Your Profile
         </h1>
@@ -33,6 +33,13 @@ const Profile: React.FC = () => {
     Recent Teamup
   </button>
 </div>
+<div>
+<Button className="bg-[#35b3f2] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#066F8C] focus:outline-none focus:ring-2 focus:ring-[#066F8C] mt-[8rem]">
+            Edit Profile
+          </Button>
+</div>
+
+
     
       </div>
     </div>
