@@ -27,7 +27,8 @@ interface AuthContextType {
     setSignupState: React.Dispatch<React.SetStateAction<SignupState>>;
     setupState: SetupState;
     setSetupState: React.Dispatch<React.SetStateAction<SetupState>>;
-    login: ()=>Promise<any>;
+    login: ()=>Promise<ApiResponse>;
+    signup: ()=>Promise<ApiResponse>;
 }
 
 // Create the context with a default value of undefined (we'll check for that)
@@ -39,8 +40,12 @@ export const AuthFormContextProvider: React.FC<{ children: ReactNode }> = ({ chi
     const [signupState, setSignupState] = useState<SignupState>({ full_name: "", email: "", user_name: "", password: "" });
     const [setupState, setSetupState] = useState<SetupState>({ bio: "", skills: [] as string[], pfp_url: "", pfp_file: null as null | File });
     const login = async() => {
-        const res = await myAxios.post("/api/login", loginState);
-        return res.data;
+        const res = await myAxios.post("/api/auth/login", loginState);
+        return res.data as ApiResponse;
+    }
+    const signup = async() => {
+        const res = await myAxios.post("/api/auth/signup", signupState);
+        return res.data as ApiResponse;
     }
     const values = {
         loginState,
@@ -49,7 +54,8 @@ export const AuthFormContextProvider: React.FC<{ children: ReactNode }> = ({ chi
         setSignupState,
         setupState,
         setSetupState,
-        login
+        login,
+        signup
     };
 
     return (

@@ -2,8 +2,23 @@ import React from "react";
 import CustomInput from "../../components/input";
 import { AccountCircle, Lock } from "@mui/icons-material"; // Import MUI icons
 import loginImg from '../../assets/login_img.png';
+import Button from "../../components/Button";
+import { useAuthFormContext } from "../../contexts/authFormContext";
+import { toastError } from "../../lib/toast.lib";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+    const {login, setLoginState, loginState} = useAuthFormContext();
+    const navigate = useNavigate();
+    const onLogin = async(e: any) => {
+        e.preventDefault()
+        const res = await login();
+        if(res.error){
+            toastError(res.message);
+            return;
+        }
+        navigate("/")
+    }
     return (
         <div className="p-6 flex flex-col w-screen h-screen justify-between">
             
@@ -35,6 +50,7 @@ export default function LoginPage() {
                         type="text" 
                         placeholder="Username" 
                         className="bg-c_gray-200 p-4 rounded-3xl text-c_gray-700 flex flex-row space-x-2 mb-1 w-full"
+                        onChange={(e)=>setLoginState({...loginState, user_name: e.target.value})}
                     />
                     
 
@@ -43,13 +59,16 @@ export default function LoginPage() {
                         type="password" 
                         placeholder="Password" 
                         className="bg-c_gray-200 p-4 rounded-3xl text-c_gray-700 flex flex-row space-x-2 mt-2 w-full"
+                        onChange={(e)=>setLoginState({...loginState, password: e.target.value})}
+
                     />
                     
-
+{/* 
                     <button type="submit" className="w-full py-2 bg-blue-500 text-white rounded-lg mt-4">
                         Login
-                    </button>
+                    </button> */}
 
+                    <Button onClick={onLogin}>Login</Button>
                     <p className="login-footer font-medium text-c_gray-600 mt-4 text-center">
                         Don't have an account?{' '}
                         <a href="/register" className="text-[#066F8C]">Sign up</a>

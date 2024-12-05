@@ -1,0 +1,1 @@
+export const AUTH_JWT = "asdajkdshf902342i5-01n"
