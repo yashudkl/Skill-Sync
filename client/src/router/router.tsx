@@ -3,6 +3,7 @@ import SetupDescriptionPage from "../pages/SetupAccount/description";
 import Profile from "../pages/Profile/Profile"; // Keeping the Profile import
 import SetupPfpPage from "../pages/SetupAccount/profilePic";
 import SetupSkillsSelectionPage from "../pages/SetupAccount/SkillsSelection";
+import MainLayout from "../layout/mainLayout";
 
 export default function MainRouter() {
     return (
@@ -15,6 +16,11 @@ export default function MainRouter() {
                 <Route path="/setup/description" element = {<SetupDescriptionPage />} />
                 <Route path="/setup/pfp" element = {<SetupPfpPage />} />
                 <Route path="/setup/skills" element = {<SetupSkillsSelectionPage />} />
+
+                //Nav Bar Ko lagi 
+                <Route path = "/" element = {<MainLayout />}>
+                    <Route index element = {<>HEY</>} />
+                </Route>
             </Routes>
         </BrowserRouter>
     );
