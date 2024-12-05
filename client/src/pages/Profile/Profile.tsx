@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Button from '../../components/Button';
 const Profile: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#F8F8FD]">
@@ -33,6 +33,13 @@ const Profile: React.FC = () => {
     Recent Teamup
   </button>
 </div>
+<div>
+<Button className="bg-[#066F8C] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#066F8C] focus:outline-none focus:ring-2 focus:ring-[#066F8C] mt-80">
+            Edit Profile
+          </Button>
+</div>
+
+
     
       </div>
     </div>
