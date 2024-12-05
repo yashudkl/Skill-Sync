@@ -34,7 +34,7 @@ const Profile: React.FC = () => {
   </button>
 </div>
 <div>
-<Button className="bg-[#066F8C] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#066F8C] focus:outline-none focus:ring-2 focus:ring-[#066F8C] mt-80">
+<Button className="bg-[#35b3f2] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#066F8C] focus:outline-none focus:ring-2 focus:ring-[#066F8C] mt-[8rem]">
             Edit Profile
           </Button>
 </div>
