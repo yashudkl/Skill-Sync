@@ -41,6 +41,7 @@ export default function MainRouter()
               <Route path="profile" element={<Profile />} />
               <Route path="create-team" element={<CreateTeam />} />
               <Route path="join-team" element={<JoinTeam />} />
+              <Route path="teams" element={<>TEAMSSSSS</>} />
             </Route>
     
             {/* Setup Routes (These could be outside the MainLayout if they don't need the Navbar) */}

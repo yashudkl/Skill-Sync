@@ -6,6 +6,7 @@ import { authenticateUser, getLoginStatus, loginController, signupController } f
 import { setupAccountController } from "./controllers/setup.controller";
 import cookieParser from "cookie-parser";
 import "dotenv/config";
+import { createTeamController } from "./controllers/team.controller";
 // import UsersModel from "./models/Users"; // Adjust the path as per your project structure
 
 const app = express();
@@ -27,6 +28,8 @@ app.post("/api/auth/signup", signupController);
 app.post("/api/auth/setup", authenticateUser,setupAccountController);
 app.get("/api/auth/status", authenticateUser, getLoginStatus);
 
+//team
+app.post("/api/team/create", authenticateUser, createTeamController);
 async function init() {
     await mongoose.connect(MONGO_URI, {
         dbName: "thelits"
