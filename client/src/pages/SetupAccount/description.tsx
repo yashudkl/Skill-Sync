@@ -2,8 +2,10 @@ import CustomInput from "../../components/input";
 import PersonIcon from '@mui/icons-material/Person';
 import CustomTextArea from "../../components/textarea";
 import Button from "../../components/Button";
+import { useNavigate } from "react-router-dom";
 // import CustomTextArea from "../../components/textarea";
 export default function SetupDescriptionPage(){
+    const navigate = useNavigate();
     return(
         <>
             <div className="p-6 flex w-screen h-screen flex-col space-y-4">
@@ -18,7 +20,7 @@ export default function SetupDescriptionPage(){
                         <CustomTextArea placeholder="Describe..." />
                     </div>
                     <div className="mt-auto">
-                        <Button>Next</Button>
+                        <Button onClick={()=>navigate("/setup/skills")}>Next</Button>
                     </div>
                 </form>
             </div>

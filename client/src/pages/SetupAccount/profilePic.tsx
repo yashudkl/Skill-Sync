@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import AvatarInput from "../../components/AvatarInput";
 import Button from "../../components/Button";
 
 export default function SetupPfpPage() {
+    const navigate = useNavigate()
     return (
         <div className="p-6 flex w-screen h-screen flex-col space-y-4">
             <div className="flex py-2">
@@ -19,7 +21,7 @@ export default function SetupPfpPage() {
                     </div>
                 </div>
                 <div className="mt-auto flex">
-                    <Button>Next</Button>
+                    <Button onClick={()=>navigate("/setup/description")}>Next</Button>
                 </div>
             </form>
         </div>
