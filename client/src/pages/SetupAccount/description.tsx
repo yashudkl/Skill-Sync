@@ -13,11 +13,13 @@ export default function SetupDescriptionPage(){
                 <div className="font-medium text-c_gray-600">
                     Add a description about yourself
                 </div>
-                <form className="flex flex-col w-full flex-1 space-y-4">
+                <form className="flex flex-col w-full flex-1">
                     <div className="h-[490px] w-full">
                         <CustomTextArea placeholder="Describe..." />
                     </div>
-                    <Button>Next</Button>
+                    <div className="mt-auto">
+                        <Button>Next</Button>
+                    </div>
                 </form>
             </div>
         </>
