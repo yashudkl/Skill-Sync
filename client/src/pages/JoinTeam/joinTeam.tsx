@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../../components/Button';
 import Input from '../../components/input';
 import CustomTextArea from '../../components/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { CATEGORIES } from '@/lib/categories';
+import myAxios from '@/api/axios';
+import { toastError, toastSuccess } from '@/lib/toast.lib';
 const joinTeam: React.FC = () => {
+  const [category, setCategory] = useState<string>("");
+  const onJoin = async(e: any) => {
+    e.preventDefault();
+    const res = await myAxios.post("/api/team/join", {category});
+    const data = res.data as ApiResponse<Team>;
+    if(data.error){
+      return toastError(data.message);
+    }
+    toastSuccess(`Joined Team - ${data.result.team_name}`)
+  } 
   return (
     <div className="flex flex-col  bg-[#F8F8FD] h-[91.1vh]">
       <div className=" w-full h-full bg-white shadow-md  p-6 flex flex-col">
@@ -16,7 +28,7 @@ const joinTeam: React.FC = () => {
           <p className="text-[16px] font-bold mt-4 text-[#384B6B] font-poppins">
             Enter your category
           </p>
-          <Select>
+          <Select onValueChange={setCategory}>
             <SelectTrigger className="w-full h-[50px]">
               <SelectValue placeholder="Category" />
             </SelectTrigger>
@@ -27,13 +39,8 @@ const joinTeam: React.FC = () => {
              
             </SelectContent>
           </Select>
-          <p className="text-[16px] font-bold mt-4 text-[#384B6B] font-poppins">
-            Number of team members
-          </p>
-          <Input placeholder='Enter Number' />
-
         </div>
-        <Button className='mt-auto'>Join </Button>
+        <Button className='mt-auto' onClick={onJoin}>Join </Button>
       </div>
     </div>
   );
