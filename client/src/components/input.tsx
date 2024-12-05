@@ -1,11 +1,13 @@
 interface Props extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-
+    icon?: any
 }
-export default function CustomInput(props: Props)
+
+export default function CustomInput(Props: Props)
 {
     return(
-        <div className="bg-c_gray-500">
-            <input {...props} className=""/>
+        <div className="bg-c_gray-200 max-w-[350px] p-4 rounded-3xl text-c_gray-700 flex flex-row space-x-2">
+            <Props.icon className = "!text-c_gray-600"/>
+            <input {...Props} className="bg-transparent placeholder:text-c_gray-600"/>
         </div>
     )
 }
