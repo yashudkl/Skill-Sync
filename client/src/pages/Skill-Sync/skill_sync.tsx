@@ -1,5 +1,5 @@
 import React from "react";
-
+import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 import FindImg from "../../assets/find.png"
 import JoinImg from "../../assets/join.png"
 import CreateImg from "../../assets/create.png"
@@ -12,6 +12,9 @@ export default function LoginPage() {
         <div className="p-6 flex w-screen flex-col space-y-4 h-full">
             <div className="flex py-2">
                 <h1 className="text-4xl text-[#066F8C] font-bold mb-2">Skill Sync</h1>
+                <NavLink to = "/manage/teams" className="flex justify-center items-center ml-auto text-secondary-green-900">
+                    <CircleNotificationsIcon fontSize="large" />
+                </NavLink>
             </div>
             <div className="font-medium text-c_gray-600  mb-2">
                 Choose your option below to start your dream projects.

@@ -11,8 +11,8 @@ const options = { maxAge: expiresIn, httpOnly: false };
 export const loginController: Controller = async(req, res) => {
     const jsonResponse = new JsonResponse(res);
     try {
-        const {username, password} = req.body;
-        const user = await User.findOne({username});
+        const {user_name, password} = req.body;
+        const user = await User.findOne({user_name});
         if(!user) return jsonResponse.clientError("No user found");
         const isPasswordValid = await bcrypt.compare(password, user.password as string);
         if (!isPasswordValid) {
