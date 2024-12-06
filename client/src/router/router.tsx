@@ -8,8 +8,12 @@ import SetupPfpPage from "../pages/SetupAccount/profilePic";
 import SetupSkillsSelectionPage from "../pages/SetupAccount/SkillsSelection";
 import CreateTeam from "../pages/CreateTeam/createTeam";
 import JoinTeam from "../pages/JoinTeam/joinTeam";
+import FindingSomeone from "../pages/Finding/FoundSomeone"
 import MainLayout from "../layout/mainLayout"; // Main layout for navigation
-import FoundSomeone from "../pages/FoundSomeone/FoundSomeone"; // Main layout for navigation
+import MemberSelected from "../pages/Finding/MemberSelected";
+import MoreMemberSelected from "../pages/Finding/MoreMemberSelected"
+import TeamDashboard from "../pages/TeamDashboard/team-dashboard";
+
 
 export default function MainRouter()
 {
@@ -23,6 +27,12 @@ export default function MainRouter()
           <Route path="profile" element={<Profile />} />
           <Route path="createTeam" element={<CreateTeam />} />
           <Route path="joinTeam" element={<JoinTeam />} />
+          <Route path="FindingSomeone" element={<FindingSomeone />} />
+          <Route path="MemberSelected" element={<MemberSelected />} />
+          <Route path="MoreMemberSelected" element={<MoreMemberSelected />} />
+
+          <Route path="TeamDashboard" element={<TeamDashboard />} />
+
         </Route>
 
         {/* Setup Routes (These could be outside the MainLayout if they don't need the Navbar) */}
@@ -32,11 +42,9 @@ export default function MainRouter()
         <Route path="/login" element = {<LoginPage />} />
         <Route path="/register" element = {<RegisterPage />} />
         <Route path="/skill_sync" element = {<SkillSyncPage />} />
-        <Route path="/foundsomeone" element = {<FoundSomeone />} />
         <Route path="/setup/skills" element={<SetupSkillsSelectionPage />} />
 
             </Routes>
         </BrowserRouter>
     )
 }
-
