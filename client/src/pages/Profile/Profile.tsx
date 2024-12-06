@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from '../../components/Button';
+import { useAuthFormContext } from '@/contexts/authFormContext';
 const Profile: React.FC = () => {
+  const {currentUser} = useAuthFormContext()
   return (
     <div className="flex flex-col  bg-[#F8F8FD]">
       <div className="w-full h-screen bg-white shadow-md rounded-lg p-6">
@@ -12,17 +14,17 @@ const Profile: React.FC = () => {
         </p>
         <div className="text-center">
           <img
-            className="w-24 h-24 mx-auto rounded-full border-2 border-blue-500 mt-5"
-            src="https://via.placeholder.com/150"
+            className="w-24 h-24 mx-auto rounded-full border-2 border-blue-500 mt-5 object-cover"
+            src={currentUser?.pfp_url}
             alt="Profile"
           />
-          <h1 className="text-2xl font-bold mt-4 text-gray-700">John Doe</h1>
+          <h1 className="text-2xl font-bold mt-4 text-gray-700">{currentUser?.full_name}</h1>
         </div>
 
         <div className="mt-6">
         
           <p className="text-[16px]  text-[#384B6B] font-poppins mt-2">
-            Hello! I'm a software engineer passionate about building intuitive and dynamic web applications. I enjoy solving complex problems and learning new technologies.
+            {currentUser?.bio}
           </p>
         </div>
         <div className="flex justify-between space-x-4 w-full mt-8">
