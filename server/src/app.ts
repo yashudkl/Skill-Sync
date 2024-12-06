@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors({ credentials: true, origin: true,  }));
 app.use(cookieParser())
 // MongoDB Atlas URI (Avoid hardcoding sensitive data for production)
-const MONGO_URI = "mongodb://localhost:27017";
+const MONGO_URI = "mongodb+srv://teamlits:teamlits123@skillsync.tkoov.mongodb.net/?retryWrites=true&w=majority&appName=SkillSync";
 
 
 
