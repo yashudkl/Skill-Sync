@@ -8,7 +8,7 @@ export default function NavBar()
     return(
         <nav className="fixed w-full h-[80px] px-4 border-t-[1px] border-t-c_gray-200 bottom-0 flex items-center bg-white">
             <NavItem Icon={ShuffleIcon} label="Connect" to="/" />
-            <NavItem Icon={PeopleIcon} label="Teams" to="/teams" />
+            <NavItem Icon={PeopleIcon} label="Teams" to="/manage/teams" />
             <NavItem Icon={AccountCircleIcon} label="Profile" to="/profile" />
         </nav>
     )

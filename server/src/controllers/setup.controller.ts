@@ -28,7 +28,7 @@ export const setupAccountController: Controller = async(req, res) => {
                     pfp_url: url,
                 }
             })
-            jsonResponse.success(await User.findOne());
+            jsonResponse.success(await User.findOne({_id}));
         } catch (error) {
             console.log(error)
             return jsonResponse.serverError();

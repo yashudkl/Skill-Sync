@@ -12,7 +12,11 @@ const createTeam: React.FC = () => {
     category: "",
     description: "",
     team_members: [],
-    team_name: ""
+    team_name: "",
+    _id: "",
+    foundUsers: [],
+    rejectedUsers: [],
+    user_id: ""
   })
   const navigate = useNavigate();
   const onSubmit = async(e: any) => {
@@ -22,7 +26,7 @@ const createTeam: React.FC = () => {
     if(resData.error){
       return toastError(resData.message);
     }
-    navigate("/teams")
+    navigate("/manage/teams")
   }
   return (
     <div className="flex flex-col  bg-[#F8F8FD]">

@@ -17,6 +17,7 @@ import MemberSelected from "../pages/Finding/MemberSelected";
 import MoreMemberSelected from "../pages/Finding/MoreMemberSelected";
 import TeamDashboard from "../pages/TeamDashboard/team-dashboard";
 import MainLayout from "../layout/mainLayout";
+import TeamList from "@/pages/TeamList/TeamList";
 
 export default function MainRouter() {
   const { getStatus, currentUser, setCurrentUser } = useAuthFormContext();
@@ -54,10 +55,11 @@ export default function MainRouter() {
             <Route path="profile" element={<Profile />} />
             <Route path="create-team" element={<CreateTeam />} />
             <Route path="join-team" element={<JoinTeam />} />
-            <Route path="FindingSomeone" element={<FindingSomeone />} />
-            <Route path="MemberSelected" element={<MemberSelected />} />
-            <Route path="MoreMemberSelected" element={<MoreMemberSelected />} />
-            <Route path="TeamDashboard" element={<TeamDashboard />} />
+            <Route path="manage/teams/:id" element={<FindingSomeone />} />
+            <Route path="manage/teams" element={<TeamList />} />
+            <Route path="selected" element={<MemberSelected />} />
+            <Route path="selected/more" element={<MoreMemberSelected />} />
+            <Route path="dashboard" element={<TeamDashboard />} />
           </Route>
 
           {/* Setup Routes */}

@@ -2,37 +2,55 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Input from '../../components/input';
+import { useParams } from "react-router-dom";
+import myAxios from "@/api/axios";
+import { toastError } from "@/lib/toast.lib";
 
 const FoundSomeone: React.FC = () => {
 
 
   // state to hold user data
 
-
-  const [user, setUser] = useState<{ id: string; name: string; bio: string; skills: string[]; profilePic?: string } | null>(null);
+  const {id} = useParams();
+  
+  const [user, setUser] = useState<User|null>(null);
   const [loading, setLoading] = useState(true);
 
   // fetch user data
 
+  const getUser = async() => {
+    setLoading(true);
+    const res = await myAxios.get("/api/team/found/"+id);
+    const data = res.data as ApiResponse<User[]>;
+    setLoading(false)
+    if(data.error) return toastError(data.message)
+    setUser(data.result[0]);
+  }
 
+  const onAccept = async() => {
+    if(!user) return;
+    const res = await myAxios.put(`/api/team/accept/${id}/${user._id}`);
+    const data = res.data as ApiResponse;
+    if(data.error) return toastError(data.message);
+    getUser()
+  }
+
+  const onDecline = async() => {
+    if(!user) return;
+    const res = await myAxios.put(`/api/team/decline/${id}/${user._id}`);
+    const data = res.data as ApiResponse;
+    if(data.error) return toastError(data.message);
+    getUser()
+  }
   useEffect(() => {
-    const userId = "123"; // change this based on actual user selection
-    axios
-      .get(`http://localhost:5000/api/users/${userId}`) // fetch user by ID from the backend
-      .then((response) => {
-        setUser(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching user:", error);
-        setLoading(false);
-      });
+    getUser()
   }, []);
 
- 
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  if(!user) return <div>No User Found</div>
 
   return (
     <div className="flex flex-col bg-[#F8F8FD] min-h-screen">
@@ -57,10 +75,10 @@ const FoundSomeone: React.FC = () => {
         <div className="text-center">
           <img
             className="w-24 h-24 mx-auto rounded-full border-2 border-blue-500 mt-5"
-            src={user?.profilePic || "https://via.placeholder.com/150"} // Dynamically load profile image
+            src={user?.pfp_url || "https://via.placeholder.com/150"} // Dynamically load profile image
             alt="Profile"
           />
-          <h1 className="text-2xl font-bold mt-4 text-gray-700">{user?.name}</h1>
+          <h1 className="text-2xl font-bold mt-4 text-gray-700">{user?.full_name}</h1>
         </div>
 
         <div className="mt-6">
@@ -97,7 +115,7 @@ const FoundSomeone: React.FC = () => {
         {user && (
           <div className="mt-4">
             <a
-              href={`/profile/${user.id}`}
+              href={`/profile/${user._id}`}
               className="text-blue-500 text-sm font-medium underline"
             >
               See Profile
@@ -106,10 +124,10 @@ const FoundSomeone: React.FC = () => {
         )}
 
         <div className="flex justify-between space-x-4 w-full mt-8">
-          <button className="bg-[#066F8C] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#066F8C] focus:outline-none focus:ring-2 focus:ring-[#066F8C]">
+          <button onClick={onAccept} className="bg-[#066F8C] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#066F8C] focus:outline-none focus:ring-2 focus:ring-[#066F8C]">
             Accept
           </button>
-          <button className="bg-[#066F8C] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#066F8C] focus:outline-none focus:ring-2 focus:ring-[#066F8C]">
+          <button onClick={onDecline} className="bg-[#066F8C] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#066F8C] focus:outline-none focus:ring-2 focus:ring-[#066F8C]">
             Decline
           </button>
         </div>
