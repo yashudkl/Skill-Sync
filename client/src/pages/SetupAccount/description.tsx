@@ -23,7 +23,7 @@ export default function SetupDescriptionPage(){
                         <CustomTextArea value = {setupState.bio} onChange={(e)=>setSetupState({...setupState, bio: e.target.value})} placeholder="Describe..." />
                     </div>
                     <div className="mt-auto">
-                        <Button onClick={()=>navigate("/setup/skills")}>Next</Button>
+                        <Button onClick={(e)=>{e.preventDefault(); navigate("/setup/skills")}}>Next</Button>
                     </div>
                 </form>
             </div>

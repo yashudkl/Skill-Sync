@@ -19,11 +19,11 @@ export default function SetupPfpPage() {
                     Choose Profile Picutre
                     </div>
                     <div className="flex items-center justify-center">
-                        <AvatarInput onUrlChange={(url)=>setSetupState({...setupState, pfp_url:  url})} imageSrc={setupState.pfp_url} onImageChange={(image)=>setSetupState({...setupState, pfp_file: image})} />
+                        <AvatarInput onUrlChange={(url)=>{setSetupState({...setupState, pfp_url:  url})}} imageSrc={setupState.pfp_url} onImageChange={(image)=>setSetupState({...setupState, pfp_file: image})} />
                     </div>
                 </div>
                 <div className="mt-auto flex">
-                    <Button onClick={()=>navigate("/setup/description")}>Next</Button>
+                    <Button onClick={(e)=>{e.preventDefault(); navigate("/setup/description")}}>Next</Button>
                 </div>
             </form>
         </div>

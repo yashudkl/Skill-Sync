@@ -5,7 +5,19 @@ import SearchIcon from '@mui/icons-material/Search';
 import { communitySkills } from "../../lib/skills";
 import { useContext } from "react";
 import { useAuthFormContext } from "../../contexts/authFormContext";
+import { toastError } from "@/lib/toast.lib";
+import { useNavigate } from "react-router-dom";
 export default function SetupSkillsSelectionPage() {
+    const {setupAccount, setCurrentUser} = useAuthFormContext();
+    const navigate = useNavigate();
+    const onSetup = async() => {
+        const res = await setupAccount();
+        if(res.error){
+            return toastError(res.message);
+        }
+        setCurrentUser(res.result);
+        navigate("/");
+    }
     return (
         <div className="p-6 flex w-screen h-screen flex-col space-y-6">
             <div className="flex py-2">
@@ -26,7 +38,7 @@ export default function SetupSkillsSelectionPage() {
                 }
             </div>
             <div>
-                <Button>Next</Button>
+                <Button onClick={onSetup}>Finish</Button>
             </div>
         </div>
     )
