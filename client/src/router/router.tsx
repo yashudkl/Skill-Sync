@@ -9,6 +9,7 @@ import SetupSkillsSelectionPage from "../pages/SetupAccount/SkillsSelection";
 import CreateTeam from "../pages/CreateTeam/createTeam";
 import JoinTeam from "../pages/JoinTeam/joinTeam";
 import MainLayout from "../layout/mainLayout"; // Main layout for navigation
+import FoundSomeone from "../pages/FoundSomeone/FoundSomeone"; // Main layout for navigation
 
 export default function MainRouter()
 {
@@ -31,6 +32,7 @@ export default function MainRouter()
         <Route path="/login" element = {<LoginPage />} />
         <Route path="/register" element = {<RegisterPage />} />
         <Route path="/skill_sync" element = {<SkillSyncPage />} />
+        <Route path="/foundsomeone" element = {<FoundSomeone />} />
         <Route path="/setup/skills" element={<SetupSkillsSelectionPage />} />
 
             </Routes>
