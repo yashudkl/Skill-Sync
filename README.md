@@ -5,7 +5,7 @@
 
 **Skill-Sync** is a web application designed to help people connect based on their skill sets. Whether you're looking to team up for a project, find a casual collaborator, or explore hiring opportunities, Skill-Sync connects individuals with the right skills in various categories. The app allows users to find others with complementary expertise or hire professionals with specific abilities.
 
-This project was built during the **Coding Camp Hackathon** in one day, using the **MERN Stack**, **Tailwind CSS**, and **TypeScript**.
+This project was built during the **Coding Camp (One day mini Hackathon)** in one day, using the **MERN Stack**, **Tailwind CSS**, and **TypeScript**.
 
 The idea for **Skill-Sync** was approached by a visionary who recognized the gap in connecting individuals based on their skills in the real world. Whether it’s for casual collaboration, side projects, or hiring, this platform aims to bring people together in a seamless and efficient way, just like how professionals network in the real world.
 
