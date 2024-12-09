@@ -25,8 +25,6 @@ The idea for **Skill-Sync** was approached by a visionary who recognized the gap
   - Express.js
   - MongoDB
 
-- **State Management**: 
-  - Redux (if applicable)
 
 - **Authentication**: 
   - JWT for user authentication
