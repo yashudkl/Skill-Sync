@@ -1,6 +1,6 @@
 <h1 style="display: inline;">
   Skill-Sync
-  <img src="skill-sync_logo.png" alt="skill-sync-logo" style="width: 40px; height: 40px; vertical-align: middle; margin-left: 10px;">
+  <img src="skill-sync-logo.png" alt="skill-sync-logo" style="width: 40px; height: 40px; vertical-align: middle; margin-left: 10px;">
 </h1>
 
 **Skill-Sync** is a web application designed to help people connect based on their skill sets. Whether you're looking to team up for a project, find a casual collaborator, or explore hiring opportunities, Skill-Sync connects individuals with the right skills in various categories. The app allows users to find others with complementary expertise or hire professionals with specific abilities.
