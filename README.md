@@ -1,4 +1,4 @@
-# Skill-Sync
+# Skill-Sync ![Alt text](skill-sync logo.jpg)
 
 **Skill-Sync** is a web application designed to help people connect based on their skill sets. Whether you're looking to team up for a project, find a casual collaborator, or explore hiring opportunities, Skill-Sync connects individuals with the right skills in various categories. The app allows users to find others with complementary expertise or hire professionals with specific abilities.
 
