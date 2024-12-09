@@ -45,3 +45,4 @@ The idea for **Skill-Sync** was approached by a visionary who recognized the gap
 - **Yashwant Dhakal**
 
   
+[Watch the Demo Video For someone who wants to create a team](src/demo.mp4)
