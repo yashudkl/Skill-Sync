@@ -17,6 +17,8 @@ The idea for **Skill-Sync** was approached by a visionary who recognized the gap
 - **Casual & Hiring Mode**: Users can either look for casual collaboration or list themselves for hiring opportunities.
 - **Responsive Design**: The app is fully responsive, built with **Tailwind CSS** to ensure a smooth experience on any device.
 
+## Gif or Video of App
+
 ## Tech Stack
 
 - **Frontend**: 
