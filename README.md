@@ -26,6 +26,7 @@ Demo video
 ## Hosting 
 
 Hosting description
+Adding stuffs
 
 ## Tech Stack
 
