@@ -31,15 +31,17 @@ The idea for **Skill-Sync** was approached by a visionary who recognized the gap
 
 - **Authentication**: 
   - JWT for user authentication
+  
 
 
 
 ## Future Improvements
 
-- Advanced search and filtering options (e.g., by location, experience level).
+- Advanced search and filtering options (e.g., by location, experience level). 
 - User ratings and reviews for collaborators.
 - Real-time chat feature for easier communication.
 - More skill categories and detailed profiles.
+- Production / Launch
 
 ## Team Members
 
