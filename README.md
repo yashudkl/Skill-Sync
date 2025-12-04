@@ -19,6 +19,8 @@ The idea for **Skill-Sync** was approached by a visionary who recognized the gap
 
 ## Gif or Video of App
 
+Demo video 
+
 ## Tech Stack
 
 - **Frontend**: 
