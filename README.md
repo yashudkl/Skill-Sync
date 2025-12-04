@@ -21,6 +21,12 @@ The idea for **Skill-Sync** was approached by a visionary who recognized the gap
 
 Demo video 
 
+
+
+## Hosting 
+
+Hosting description
+
 ## Tech Stack
 
 - **Frontend**: 
